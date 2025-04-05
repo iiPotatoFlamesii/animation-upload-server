@@ -112,14 +112,14 @@ async function upload(req, res, args) {
         if(!animationData.subarray(0, 16).equals(BinaryHeader)) {
             // res.status(400)
             //     .send("Binary data malformed");
-            console.log(warn("E14: Animation Data does not contain the proper file header!"));
+            console.log(warning("E14: Animation Data does not contain the proper file header!"));
             continue;
         }
 
         if(!animationData.subarray(animationData.length - 25).equals(BinaryEnd)) {
             // res.status(400)
             //     .send("Binary data malformed");
-            console.log(warn("E15: Animation Data does not contain the proper file ending!"));
+            console.log(warning("E15: Animation Data does not contain the proper file ending!"));
             continue;
         }
 
@@ -135,7 +135,7 @@ async function upload(req, res, args) {
                     "X-CSRF-Token": csrfToken
                 },
                 body: animationData,
-                signal: AbortSignal.timeout(10000)
+                signal: AbortSignal.timeout(5000)
             });
         } catch(e) {
             console.log(error(`E25: Animation #${i + 1} failed to upload due to ${e.name} (${e.message})`));
@@ -146,7 +146,7 @@ async function upload(req, res, args) {
             let serverError = await uploadRequest.text();
             // res.status(500)
             //     .send(`RAPI ERROR: ${serverError}`);
-            console.log(warn(`Animation #${i + 1} RAPI ERROR: ${serverError}`));
+            console.log(warning(`Animation #${i + 1} RAPI ERROR: ${serverError}`));
             continue;
         }
 
