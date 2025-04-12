@@ -49,3 +49,6 @@ That's it! The reason why this server is open source is to show that this token 
 
 <p><strong>Q: Why does the server use my clipboard?</strong></p>
 <p><strong>A:</strong> The server uses your clipboard for integration with the ROBLOX Blender animation plugin. The blender animation plugin writes the encoded animation data to your clipboard, and when you import it in Studio, the server will grab the clipboard contents and attempt to decode it.</p>
+
+<p><strong>Q: I'm receiving an "Unable to authorize with cookie" error in the output. What do I do?</strong></p>
+<p><strong>A:</strong> If you are receiving this error, there are two solutions that are currently available to you. This guide shows both methods on how to fix this: <a href="https://github.com/iiPotatoFlamesii/animation-upload-server/issues/1">[GUIDE] Receiving "unable to authorize with cookie" error.</a></p>

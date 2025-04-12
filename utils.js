@@ -47,6 +47,12 @@ function writeToLogFile(message) {
 
 function getCookie() {
     return new Promise(async (resolve) => {
+        let override_cookie = appSettings["RBX_COOKIE_OVERRIDE"];
+        if(override_cookie) {
+            resolve(override_cookie);
+            return;
+        }
+
         var cookie;
 
         // thanks to evaera/roblox-animation-transfer for this code
