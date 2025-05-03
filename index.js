@@ -66,16 +66,6 @@ files.forEach((fileName) => {
     endpointModules.push(endpointModule);
 });
 
-expressApp.use((req, res, next) => {
-    let product = req.get("user-agent").split(/\s/gi, 1)[0];
-    
-    if(product !== "RobloxStudio/WinInet") {
-        res.status(418).send();
-        return;
-    }
-    next();
-});
-
 expressApp.use(endpointData.raw, raw({
     type: "text/plain",
     limit: "2mb"
