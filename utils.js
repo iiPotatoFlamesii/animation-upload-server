@@ -33,7 +33,7 @@ const endpoints = {
     `&name=${encodeURIComponent(title)}` +
     `&description=${encodeURIComponent(description)}` +
     "&AllID=1&ispublic=False&allowComments=True&isGamesAsset=False" +
-    (groupId != null ? `&communityId=${groupId}` : ""),
+    (groupId != null ? `&groupId=${groupId}` : ""),
 };
 
 const warning = (...a) => {writeToLogFile("[WARNING]: " + a.join(" ")); return chalk.bgYellow.black(a)};

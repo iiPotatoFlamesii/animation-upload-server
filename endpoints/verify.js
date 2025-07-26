@@ -4,9 +4,10 @@ const { join: joinPath } = require("node:path");
 
 const PluginId = 134443954464349;
 
-const AcceptedVersion = "3"; // version control in case there are any breaking API changes.
+const AcceptedVersion = "4"; // version control in case there are any breaking API changes.
 // 2 corresponds lasts up to v1.0.3
-// 3 corresponds corresponds to most current version; fixed API name change
+// 3 corresponds to v1.0.4; broke group uploads :broken-heart:
+// 4 corresponds to v1.0.5; fixed group uploads.
 
 async function verify(req, res, args) {
     if(args.verified) {
