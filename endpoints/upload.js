@@ -9,6 +9,7 @@ const BinaryEnd = Buffer.from([0x45, 0x4e, 0x44, 0x00, 0x00, 0x00, 0x00, 0x00, 0
 async function upload(req, res, args) {
     const isVerified = args.verified;
     const RBX_Cookie = args.token;
+    const currentTimestamp = Date.now().valueOf();
     var csrfToken = args.csrf;
 
     if(!isVerified) {
@@ -25,7 +26,7 @@ async function upload(req, res, args) {
         return;
     }
 
-    if(!csrfToken) {
+    if(!csrfToken || (currentTimestamp - args.csrfTimestamp > 1_200_000)) {
         try {
             const csrfRequest = await fetch(endpoints.logout, {
                 method: "POST",
@@ -47,6 +48,7 @@ async function upload(req, res, args) {
         }
 
         args.csrf = csrfToken
+        args.csrfTimestamp = currentTimestamp;
     }
 
     console.log(info("Received animation upload request..."));
